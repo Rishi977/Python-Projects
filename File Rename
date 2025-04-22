@@ -2,10 +2,10 @@
 
 import os   # Os is useful to interact with operating system to perform some tasks.
 
-
+#folder_path is variable which collects the path of the folder and ("~") is the by default path given by system
 folder_path = os.path.join(os.path.expanduser("~"), "Desktop", "test_folder")
 
-
+# for loop will go into the destination folder and check for the files with extension ".rtf" and change it's name
 for filename in os.listdir(folder_path):
     if filename.endswith(".rtf"):
         old_path = os.path.join(folder_path, filename)
