@@ -1,5 +1,3 @@
-
-
 from os import wait
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -44,7 +42,28 @@ driver.find_element(By.ID,"loginPassword").send_keys("abc@12345")
 #scroll and click login
 driver.find_element(By.ID, "btnLogin").click()
 
+#click on timesheet module to approve the timesheet
+time.sleep(3)
+driver.find_element(By.ID, "headingTimesheet").click()
+
+element = wait.until(EC.element_to_be_clickable((By.ID, "headingTimesheetApprove"))).click()
+
+element = wait.until(EC.element_to_be_clickable((By.ID, "approveByProject"))).click()
+
+check_box = driver.find_element(By.CLASS_NAME, "app_task")
+
+if not check_box.is_selected():
+    check_box.click()
+
+
+driver.find_element(By.ID, "btnSubmit").click()
+
+driver.find_element(By.ID, "Comments").send_keys("Work Done")
+
+comment_btn = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "btn"))).click()
+
 input("Enter any thing to close browser")
 
 time.sleep(50)
 #driver.quit()
+
